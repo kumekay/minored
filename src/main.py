@@ -5,10 +5,31 @@ import neopixel
 import network
 import uasyncio as asyncio
 from machine import Pin
+from microdot_asyncio import Microdot, Response
 
 import config
 
 gc.collect()
+
+app = Microdot()
+
+htmldoc = """<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minored</title>
+    </head>
+    <body>
+        <div>
+            <h1>Minored</h1>
+        </div>
+    </body>
+</html>
+"""
+
+
+@app.route("/")
+async def hello(request):
+    return Response(body=htmldoc, headers={"Content-Type": "text/html"})
 
 
 class Pixel:
@@ -49,6 +70,7 @@ async def connect_wifi(ssid, password):
         wlan.connect(ssid, password)
         while not wlan.isconnected():
             await asyncio.sleep_ms(10)
+        print(wlan.ifconfig())
 
 
 async def main():
@@ -58,6 +80,7 @@ async def main():
     await connect_wifi(config.WIFI_SSID, config.WIFI_PASS)
     pixel.stop_blink()
     pixel.set_color(g=15)
+    await app.start_server(debug=True)
 
     while True:
         await asyncio.sleep_ms(10)
