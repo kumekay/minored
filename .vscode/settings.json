@@ -8,6 +8,5 @@
     "python.analysis.typeshedPaths":  [".micropy/BradenM-micropy-stubs-ebac1d3/frozen", ".micropy/BradenM-micropy-stubs-4f5a52a/frozen", ".micropy/BradenM-micropy-stubs-ebac1d3/stubs", ".micropy/minored"],
 
     "python.linting.pylintEnabled": true,
-    "python.languageServer": "Microsoft",
     "python.formatting.provider": "black"
 }
