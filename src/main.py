@@ -59,8 +59,7 @@ class Pixel:
             await asyncio.sleep_ms(cycle_ms // 2)
 
     def blink(self, cycle_ms=200):
-        loop = asyncio.get_event_loop()
-        self._blinking = loop.create_task(self._blinking_coro(cycle_ms))
+        self._blinking = asyncio.create_task(self._blinking_coro(cycle_ms))
 
 
 async def connect_wifi(ssid, password):
@@ -80,10 +79,12 @@ async def main():
     await connect_wifi(config.WIFI_SSID, config.WIFI_PASS)
     pixel.stop_blink()
     pixel.set_color(g=15)
-    await app.start_server(debug=True)
+    asyncio.create_task(app.start_server(debug=True))
 
     while True:
-        await asyncio.sleep_ms(10)
+        await asyncio.sleep(10)
+        print("Allocated: {} Free: {}".format(gc.mem_alloc(), gc.mem_free()))
+        gc.collect()
 
 
 try:
