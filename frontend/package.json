@@ -1,0 +1,46 @@
+{
+  "name": "minored",
+  "version": "0.0.1",
+  "author": "po@kumekay.com",
+  "license": "Apache-2.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kumekay/minored.git"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/webpack serve --open"
+  },
+  "keywords": [
+    "flow",
+    "micropython"
+  ],
+  "main": "./dist/index.js",
+  "typings": "./dist/@types/index",
+  "dependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@projectstorm/react-diagrams": "^6.6.1",
+    "@types/node": "^16.7.13",
+    "@types/react": "^17.0.20",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "dagre": "^0.8.5",
+    "emotion": "^11.0.0",
+    "file-loader": "^6.2.0",
+    "pathfinding": "^0.4.18",
+    "paths-js": "^0.4.11",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "resize-observer-polyfill": "^1.5.1",
+    "style-loader": "^3.2.1",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.2",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
