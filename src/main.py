@@ -5,7 +5,7 @@ import neopixel
 import network
 import uasyncio as asyncio
 from machine import Pin
-from microdot_asyncio import Microdot, Response
+from microdot_asyncio import Microdot, send_file
 
 import config
 
@@ -13,23 +13,10 @@ gc.collect()
 
 app = Microdot()
 
-htmldoc = """<!DOCTYPE html>
-<html>
-    <head>
-        <title>Minored</title>
-    </head>
-    <body>
-        <div>
-            <h1>Minored</h1>
-        </div>
-    </body>
-</html>
-"""
-
 
 @app.route("/")
 async def hello(request):
-    return Response(body=htmldoc, headers={"Content-Type": "text/html"})
+    return send_file("index.html")
 
 
 class Pixel:
