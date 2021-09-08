@@ -3,21 +3,13 @@ import { DefaultPortModel, NodeModel } from '@projectstorm/react-diagrams';
 /**
  * Example of a custom model using pure javascript
  */
-export class JSCustomNodeModel extends NodeModel {
+export class HttpEndpointNodeModel extends NodeModel {
 	constructor(options = {}) {
 		super({
 			...options,
-			type: 'js-custom-node'
+			type: 'http-endpoint-node'
 		});
-		this.color = options.color || { options: 'red' };
-
-		// setup an in and out port
-		this.addPort(
-			new DefaultPortModel({
-				in: true,
-				name: 'in'
-			})
-		);
+		this.value = options.value || {};
 		this.addPort(
 			new DefaultPortModel({
 				in: false,
@@ -29,12 +21,12 @@ export class JSCustomNodeModel extends NodeModel {
 	serialize() {
 		return {
 			...super.serialize(),
-			color: this.color
+			value: this.value
 		};
 	}
 
 	deserialize(ob, engine) {
 		super.deserialize(ob, engine);
-		this.color = ob.color;
+		this.value = ob.value;
 	}
 }
