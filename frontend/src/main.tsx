@@ -28,7 +28,7 @@ const input = new HttpEndpointNodeModel({ value: 15 });
 input.setPosition(50, 50);
 
 const neopixel = new NeopixelNodeModel({ r: 240, g: 140, b: 220 });
-neopixel.setPosition(200, 50);
+neopixel.setPosition(120, 50);
 
 const link1 = new DefaultLinkModel();
 link1.setSourcePort(input.getPort("out"));

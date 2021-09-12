@@ -8,7 +8,7 @@ export class HttpEndpointNodeWidget extends React.Component {
 				<PortWidget engine={this.props.engine} port={this.props.node.getPort('out')}>
 					<div className="circle-port" />
 				</PortWidget>
-				<div className="endpoint">/r</div>
+				<div className="endpoint">{ this.props.node.endpoint }</div>
 			</div>
 		);
 	}

@@ -3,20 +3,41 @@ import sys
 
 import neopixel
 import network
+
+gc.collect()
 import uasyncio as asyncio
-from machine import Pin
+import ujson as json
+
+gc.collect()
+from machine import Pin, reset
 from microdot_asyncio import Microdot, send_file
 
 import config
 
+
+FLOW_FILE = "flow.json"
 gc.collect()
 
 app = Microdot()
 
 
+async def reset_in(seconds=1):
+    await asyncio.sleep(seconds)
+
+
 @app.route("/")
-async def hello(request):
+async def index(_):
     return send_file("index.html")
+
+
+@app.route("/flow", methods=["POST"])
+async def flow(request):
+    with open(FLOW_FILE, "w") as f:
+        f.write(request.body)
+
+    # simply reset the node to load new flow
+    asyncio.create_task(reset_in, 1)
+    return {"status": "ok"}
 
 
 class Pixel:
@@ -57,6 +78,10 @@ async def connect_wifi(ssid, password):
         while not wlan.isconnected():
             await asyncio.sleep_ms(10)
         print(wlan.ifconfig())
+
+
+async def process_flow():
+    pass
 
 
 async def main():
