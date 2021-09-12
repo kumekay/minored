@@ -14,6 +14,7 @@ from microdot_asyncio import Microdot, send_file
 
 import config
 
+import flow
 
 FLOW_FILE = "flow.json"
 gc.collect()
@@ -31,7 +32,7 @@ async def index(_):
 
 
 @app.route("/flow", methods=["POST"])
-async def flow(request):
+async def update_flow(request):
     with open(FLOW_FILE, "w") as f:
         f.write(request.body)
 
@@ -92,6 +93,11 @@ async def main():
     pixel.stop_blink()
     pixel.set_color(g=15)
     asyncio.create_task(app.start_server(debug=True))
+
+    with open("flow.json", "r") as file:
+        data = json.loads(file.read())
+
+    await flow.load(data)
 
     while True:
         await asyncio.sleep(10)

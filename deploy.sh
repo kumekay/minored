@@ -10,9 +10,10 @@ pushd frontend > /dev/null
 NODE_ENV=production node_modules/.bin/webpack
 # copy frontend to the board
 echo "Frontend size: $( du -h dist/index.html )"
+pipenv run mpremote ${BOARD} rm :index.html
 pipenv run mpremote ${BOARD} cp ./dist/index.html :index.html
 popd > /dev/null
 
 # copy sources
-pipenv run mpremote ${BOARD} cp -r ./src/ :
+pipenv run mpremote ${BOARD} cp -r/ ./src :
 
