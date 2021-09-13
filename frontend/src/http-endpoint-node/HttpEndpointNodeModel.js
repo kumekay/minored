@@ -10,7 +10,7 @@ export class HttpEndpointNodeModel extends NodeModel {
       type: "http-endpoint-node",
     });
     this.value = options.value || {};
-    this.endpoint = options.endpoint || "/g";
+    this.endpoint = options.endpoint || "/in";
     this.addPort(
       new DefaultPortModel({
         in: false,

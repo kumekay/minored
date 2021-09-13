@@ -12,10 +12,15 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     filename: "bundle.js",
   },
-  plugins: [
-    new HtmlWebpackPlugin({ title: "Minored UI", template: "index.html" }),
-    new HtmlInlineScriptPlugin(),
-  ],
+  plugins: production
+    ? [
+        new HtmlWebpackPlugin({
+          title: "Minored UI",
+          template: "template.html",
+        }),
+        new HtmlInlineScriptPlugin(),
+      ]
+    : [],
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
