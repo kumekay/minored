@@ -13,7 +13,7 @@ export class BodyWidget extends React.Component<BodyWidgetProps> {
   constructor(props) {
     super(props);
 
-    this.model = props.engine.model;
+    this.model = props.engine.getModel();
 
     this.handleSend = this.handleSend.bind(this);
     this.handleAddHttpEndpoint = this.handleAddHttpEndpoint.bind(this);
@@ -27,11 +27,13 @@ export class BodyWidget extends React.Component<BodyWidgetProps> {
   handleAddHttpEndpoint(event) {
     const node = new HttpEndpointNodeModel({ endpoint: "/input" });
     this.model.addAll(node);
+    this.props.engine.repaintCanvas();
   }
 
   handleAddNeopixel(event) {
     const node = new NeopixelNodeModel({ r: 240, g: 140, b: 220 });
     this.model.addAll(node);
+    this.props.engine.repaintCanvas();
   }
 
   render() {

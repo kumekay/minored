@@ -20,7 +20,7 @@ export class NeopixelNodeWidget extends React.Component<
 
   render() {
     return (
-      <div className="custom-node">
+      <div className="custom-node neopixel-node">
         <PortWidget
           engine={this.props.engine}
           port={this.props.node.getPort("r")}

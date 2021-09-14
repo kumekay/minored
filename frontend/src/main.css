@@ -23,9 +23,9 @@ body,
 }
 
 .custom-node {
-  border: solid 2px gray;
-  border-radius: 5px;
-  width: 200px;
+  border: solid 3px gray;
+  border-radius: 0;
+  width: 50px;
   height: 50px;
   display: flex;
   align-items: flex-start;
@@ -34,21 +34,19 @@ body,
   position: relative;
 }
 
-.custom-node-color {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
+.neopixel-node {
+  background-color: #eee;
+}
+
+.http-endpoint-node {
+  align-items: flex-end;
+  background-color: #ffef;
+  width: 200px;
 }
 
 .circle-port {
   width: 12px;
   height: 12px;
-  margin: 2px;
-  border-radius: 4px;
   background: darkgray;
   cursor: pointer;
 }

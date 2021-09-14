@@ -16,7 +16,7 @@ export class HttpEndpointNodeWidget extends React.Component {
 
   render() {
     return (
-      <div className="custom-node">
+      <div className="custom-node http-endpoint-node">
         <PortWidget
           engine={this.props.engine}
           port={this.props.node.getPort("out")}
