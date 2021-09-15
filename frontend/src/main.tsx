@@ -33,6 +33,8 @@ model.registerListener({
   nodesUpdated: saveModel,
   linksUpdated: saveModel,
   lockChanged: saveModel,
+  entityRemoved: saveModel,
+  selectionChanged: saveModel,
 });
 
 // install the model into the engine

@@ -21,7 +21,9 @@ export class BodyWidget extends React.Component<BodyWidgetProps> {
   }
 
   handleSend(event) {
-    console.log(this.model.serialize());
+    let model = this.model.serialize();
+    console.log(model);
+    localStorage.setItem("currentFlow", JSON.stringify(model));
   }
 
   handleAddHttpEndpoint(event) {

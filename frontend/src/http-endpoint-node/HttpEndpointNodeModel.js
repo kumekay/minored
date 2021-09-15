@@ -9,7 +9,6 @@ export class HttpEndpointNodeModel extends NodeModel {
       ...options,
       type: "http-endpoint-node",
     });
-    this.value = options.value || {};
     this.endpoint = options.endpoint || "/in";
     this.addPort(
       new DefaultPortModel({
@@ -22,14 +21,12 @@ export class HttpEndpointNodeModel extends NodeModel {
   serialize() {
     return {
       ...super.serialize(),
-      value: this.value,
       endpoint: this.endpoint,
     };
   }
 
   deserialize(ob, engine) {
     super.deserialize(ob, engine);
-    this.value = ob.value;
-    this.endpoint = ob.endpoint;
+    this.endpoint = ob.data.endpoint;
   }
 }
